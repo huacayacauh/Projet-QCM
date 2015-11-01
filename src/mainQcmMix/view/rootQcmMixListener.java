@@ -8,12 +8,14 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import mainQcmMix.MainQcmMix;
 import mainQcmMix.controle.openSources;
+import mainQcmMix.controle.readSourcesXLS;
 
 public class rootQcmMixListener {
 
-	private MainQcmMix  mainQcmMix;
+	private MainQcmMix mainQcmMix;
 	FileChooser fileChooser = new FileChooser();
-	openSources openXml = new openSources();
+	openSources opensource = new openSources();
+	readSourcesXLS readxls = new readSourcesXLS();
 	String path = null;
 	File file = null;
 	@FXML
@@ -25,82 +27,32 @@ public class rootQcmMixListener {
 		return mainQcmMix;
 	}
 
-
 	public void setMainQcmMix(MainQcmMix mainQcmMix) {
 		this.mainQcmMix = mainQcmMix;
 	}
-	@FXML
-    private void handleOpenXls() {
-		String n = "xls";
-		fileChooser = openXml.openSource(n);
-        file = fileChooser.showOpenDialog(mainQcmMix.getPrimaryStage());
-
-        if(file == null){
-        	textfield.setText("choisir votre resources......");
-        	textarea.setWrapText(true);
-        	textarea.setText("votre resources sont perdu, choisissez un nouveau......");
-        }else{
-        	  path = file.getAbsolutePath();
-        	  textfield.setText(path);
-        	  textarea.setWrapText(true);
-              textarea.setText("votre resources sont bon, et ils sont dans :"+path);
-
-        }
-}
 
 	@FXML
-    private void handleOpenDoc() {
-		String n = "doc";
-		fileChooser = openXml.openSource(n);
-        file = fileChooser.showOpenDialog(mainQcmMix.getPrimaryStage());
+	private void handleParcourir() {
 
+		fileChooser = opensource.openSource();
 
-        if(file == null){
-        	textfield.setText("choisir votre resources......");
-        	textarea.setWrapText(true);
-        	textarea.setText("votre resources sont perdu,choisissez un nouveau......");
+		file = fileChooser.showOpenDialog(mainQcmMix.getPrimaryStage());
 
-        }else{
-        	  path = file.getAbsolutePath();
-        	  textfield.setText(path);
-        	  textarea.setWrapText(true);
-              textarea.setText("votre resources sont bon, et ils sont dans :"+path);
+		if (file == null) {
+			textfield.setText("choisir votre resources......");
+			textarea.setWrapText(true);
+			textarea.setText("votre resources sont perdu, choisissez un nouveau......");
+		} else {
+			path = file.getAbsolutePath();
+			textfield.setText(path);
+			textarea.setWrapText(true);
+			textarea.setText("votre resources sont bon, et ils sont dans :" + path);
 
-        }
-
-}
-	@FXML
-    private void handleOpenXml() {
-		String n = "xml";
-		fileChooser = openXml.openSource(n);
-        file = fileChooser.showOpenDialog(mainQcmMix.getPrimaryStage());
-
-
-        if(file == null){
-        	textfield.setText("choisir votre resources......");
-        	textarea.setWrapText(true);
-        	textarea.setText("votre resources sont perdu, choisissez un nouveau......");
-        }else{
-        	  path = file.getAbsolutePath();
-        	  textfield.setText(path);
-        	  textarea.setWrapText(true);
-              textarea.setText("votre resources sont bon, et ils sont dans :"+path);
-
-        }
-}
-	@FXML
-	private void handleCreer(){
-
-	}
-	@FXML
-	private void handleDeleteResources(){
-		textfield.setText("choisissez un nouveau ...");
-		textarea.setWrapText(true);
-		textarea.setText("votre resources sont deletes,ils sont dans :" +path);
-		path = null;
-		file = null;
-		fileChooser = null;
-
+		}
 	}
 
+	@FXML
+	private void handlegenerer() {
+		readxls.readXLS(file);
+	}
 }

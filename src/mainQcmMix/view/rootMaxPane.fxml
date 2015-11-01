@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainQcmMix.view.rootQcmMixListener">
    <children>
-      <BorderPane layoutX="169.0" layoutY="96.0" prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <ImageView disable="true" fitHeight="80.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                <image>
@@ -18,68 +18,33 @@
                </image>
             </ImageView>
          </top>
-         <left>
-            <GridPane prefHeight="160.0" prefWidth="116.0" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <BorderPane.margin>
-                  <Insets bottom="150.0" top="10.0" />
-               </BorderPane.margin>
-               <children>
-                  <Button defaultButton="true" mnemonicParsing="false" onAction="#handleOpenXls" prefHeight="47.0" prefWidth="110.0" text="XLS">
-                     <font>
-                        <Font size="21.0" />
-                     </font>
-                  </Button>
-                  <Button defaultButton="true" layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOpenDoc" prefHeight="47.0" prefWidth="110.0" text="DOC" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="21.0" />
-                     </font>
-                  </Button>
-                  <Button defaultButton="true" layoutX="10.0" layoutY="67.0" mnemonicParsing="false" onAction="#handleOpenXml" prefHeight="47.0" prefWidth="109.0" text="XML" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="21.0" />
-                     </font>
-                  </Button>
-               </children>
-            </GridPane>
-         </left>
          <center>
-            <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+            <SplitPane dividerPositions="0.3474025974025974" orientation="VERTICAL" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                      <children>
+                        <HBox layoutX="260.0" layoutY="112.0" spacing="40.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="30.0" />
                         <VBox layoutX="42.0" layoutY="23.0" spacing="15.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                            <children>
-                              <Label layoutX="42.0" layoutY="23.0" text="La source d'adresse :" textFill="#2e58ab">
+                              <Label layoutX="42.0" layoutY="23.0" text="Choisir votre fichier:" textFill="#2e58ab">
                                  <font>
                                     <Font name="Cambria" size="15.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="textfield" layoutX="42.0" layoutY="51.0" prefHeight="25.0" prefWidth="273.0" />
+                              <TextField fx:id="textfield" disable="true" layoutX="42.0" layoutY="51.0" prefHeight="25.0" prefWidth="400.0" />
                            </children>
                         </VBox>
-                        <HBox layoutX="260.0" layoutY="112.0" spacing="40.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="30.0">
-                           <children>
-                              <Button layoutX="260.0" layoutY="112.0" mnemonicParsing="false" onAction="#handleCreer" prefHeight="25.0" prefWidth="60.0" text="Creer" />
-                              <Button layoutX="393.0" layoutY="112.0" mnemonicParsing="false" onAction="#handleDeleteResources" text="Delete" />
-                           </children>
-                        </HBox>
+                        <Button defaultButton="true" layoutX="444.0" layoutY="55.0" mnemonicParsing="false" onAction="#handleParcourir" text="Parcourir" />
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                      <children>
-                        <TextArea fx:id="textarea" disable="true" layoutX="75.0" layoutY="-34.0" prefHeight="151.0" prefWidth="498.0" text="Des resultats de controle. . . ." AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TextArea fx:id="textarea" disable="true" layoutX="-3.0" layoutY="1.0" prefHeight="151.0" prefWidth="470.0" text="Console de debogage . . ." AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="1.0">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </TextArea>
+                        <Button defaultButton="true" layoutX="499.0" layoutY="159.0" mnemonicParsing="false" onAction="#handlegenerer" prefHeight="25.0" prefWidth="73.0" text="Generer" />
                      </children>
                   </AnchorPane>
               </items>

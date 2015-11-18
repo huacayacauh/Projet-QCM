@@ -7,8 +7,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import mainQcmMix.MainQcmMix;
+import mainQcmMix.controle.openDossier;
 import mainQcmMix.controle.openSources;
 import mainQcmMix.controle.readSourcesXLS;
+import mainQcmMix.util.delete_file;
 
 public class rootQcmMixListener {
 
@@ -16,8 +18,13 @@ public class rootQcmMixListener {
 	FileChooser fileChooser = new FileChooser();
 	openSources opensource = new openSources();
 	readSourcesXLS readxls = new readSourcesXLS();
+	openDossier opendossier = new openDossier();
+	delete_file delete = new delete_file();
+
 	String path = null;
 	File file = null;
+	File filelink = null;
+	String spath = null;
 	@FXML
 	private TextField textfield;
 	@FXML
@@ -33,7 +40,7 @@ public class rootQcmMixListener {
 
 	@FXML
 	private void handleParcourir() {
-
+		delete.deleteFile();
 		fileChooser = opensource.openSource();
 
 		file = fileChooser.showOpenDialog(mainQcmMix.getPrimaryStage());
@@ -53,6 +60,38 @@ public class rootQcmMixListener {
 
 	@FXML
 	private void handlegenerer() {
-		readxls.readXLS(file);
+		if (file != null) {
+			filelink = readxls.readXLS(file);
+			if (filelink != null && filelink.list().length == 4) {
+				textarea.setWrapText(true);
+				textarea.setText("c'est bon, il y a 4 examens dans la dossier Examen.");
+			} else {
+				textarea.setWrapText(true);
+				textarea.setText("la generation est ¨¦chec ,choisissez un nouveau ou d¨¦tectez votre source .");
+			}
+
+		} else {
+			textarea.setWrapText(true);
+			textarea.setText("choisissez votre sources, s'il vous plait.");
+
+		}
+
+	}
+
+	@FXML
+	private void openLink() {
+		if (file != null) {
+			if (filelink != null) {
+				opendossier.openlink(filelink);
+			} else {
+				textarea.setWrapText(true);
+				textarea.setText("D'abord ,appuyez le botton generer.");
+			}
+
+		} else {
+			textarea.setWrapText(true);
+			textarea.setText("choisissez votre sources, s'il vous plait.");
+		}
+
 	}
 }

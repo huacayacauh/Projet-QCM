@@ -30,7 +30,7 @@ public class readSourcesXLS {
 	IsBlankRow isblankrow = new IsBlankRow();
 
 	@SuppressWarnings("deprecation")
-	public void readXLS(File file) {
+	public File readXLS(File file) {
 
 		try {
 			fileXls = new POIFSFileSystem(new FileInputStream(file));
@@ -191,19 +191,19 @@ public class readSourcesXLS {
 				}
 			}
 		}
-		/*
-		 * for (Entry<Integer, Qcm> entry : qcmList.entrySet()) { if
-		 * (entry.getKey().intValue() > -1) { System.out.println("partie : " +
-		 * entry.getValue().getPartie()); System.out.println("id: " +
-		 * entry.getKey().intValue() + " , title : " +
-		 * entry.getValue().getTitle()); System.out.println("a " +
-		 * entry.getValue().getChoix1()); System.out.println("b " +
-		 * entry.getValue().getChoix2()); System.out.println("c " +
-		 * entry.getValue().getChoix3()); System.out.println("d " +
-		 * entry.getValue().getChoix4()); } }
-		 */
+		File filet = null;
+		if (!qcmList.isEmpty()) {
+			filet = new File("Examen");
+			if (!filet.exists()) {
+				filet.mkdir();
+
+			}
+		} else {
+			return filet;
+		}
 		WriteXls writexls = new WriteXls();
-		writexls.exportXls(qcmList);
+		writexls.exportXls(qcmList, filet);
+		return filet;
 
 	}
 

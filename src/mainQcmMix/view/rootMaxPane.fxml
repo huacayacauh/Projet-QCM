@@ -44,7 +44,12 @@
                               <Font size="18.0" />
                            </font>
                         </TextArea>
-                        <Button defaultButton="true" layoutX="499.0" layoutY="159.0" mnemonicParsing="false" onAction="#handlegenerer" prefHeight="25.0" prefWidth="73.0" text="Generer" />
+                        <HBox layoutX="430.0" layoutY="159.0" spacing="20.0" AnchorPane.rightAnchor="4.0">
+                           <children>
+                              <Button defaultButton="true" layoutX="430.0" layoutY="159.0" mnemonicParsing="false" onAction="#handlegenerer" prefHeight="25.0" prefWidth="73.0" text="Generer" />
+                              <Button defaultButton="true" layoutX="529.0" layoutY="159.0" mnemonicParsing="false" onAction="#openLink" prefHeight="25.0" prefWidth="71.0" text="Link" />
+                           </children>
+                        </HBox>
                      </children>
                   </AnchorPane>
               </items>

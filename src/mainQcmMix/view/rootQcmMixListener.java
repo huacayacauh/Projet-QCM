@@ -9,7 +9,7 @@ import javafx.stage.FileChooser;
 import mainQcmMix.MainQcmMix;
 import mainQcmMix.controle.openDossier;
 import mainQcmMix.controle.openSources;
-import mainQcmMix.controle.readSourcesXLS;
+import mainQcmMix.controle.GenererXLS;
 import mainQcmMix.util.delete_file;
 
 public class rootQcmMixListener {
@@ -17,7 +17,7 @@ public class rootQcmMixListener {
 	private MainQcmMix mainQcmMix;
 	FileChooser fileChooser = new FileChooser();
 	openSources opensource = new openSources();
-	readSourcesXLS readxls = new readSourcesXLS();
+	GenererXLS readxls = new GenererXLS();
 	openDossier opendossier = new openDossier();
 	delete_file delete = new delete_file();
 
@@ -62,9 +62,11 @@ public class rootQcmMixListener {
 	private void handlegenerer() {
 		if (file != null) {
 			filelink = readxls.readXLS(file);
-			if (filelink != null && filelink.list().length == 4) {
+			//if (filelink != null && filelink.list().length == 4) {
+			if (filelink != null) {
 				textarea.setWrapText(true);
-				textarea.setText("c'est bon, il y a 4 examens dans la dossier Examen.");
+				textarea.setText(
+						"C'est bon, il y a 4 examens dans la dossier Examen. il vous faut bien regarder des caract¨¨res gras dans la reponse.");
 			} else {
 				textarea.setWrapText(true);
 				textarea.setText("la generation est ¨¦chec ,choisissez un nouveau ou d¨¦tectez votre source .");

@@ -12,10 +12,10 @@ public class openSources {
 	public FileChooser openSource(){
 
 		list.add("*.xls");
-		list.add("*.doc");
+		//list.add("*.doc");
 		FileChooser.ExtensionFilter extFilter = null;
 		FileChooser fileChooser = new FileChooser();
-        extFilter = new FileChooser.ExtensionFilter("xls.doc files",list);
+        extFilter = new FileChooser.ExtensionFilter(".xls files",list);
         fileChooser.getExtensionFilters().add(extFilter);
 		return fileChooser;}
 }

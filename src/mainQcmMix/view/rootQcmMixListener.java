@@ -49,7 +49,7 @@ public class rootQcmMixListener {
 			textfield.setText("choisir votre votre fichier source");
 			textarea.setWrapText(true);
 			textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
-			textarea.setText("Fichier perdu, choisissez de nouveau...");
+			textarea.setText("Aucun fichier choisi, parcourir de nouveau...");
 		} else {
 			path = file.getAbsolutePath();
 			textfield.setText(path);
@@ -60,6 +60,7 @@ public class rootQcmMixListener {
 		}
 	}
 
+	// Affichage des erreurs dans la console pour le boutton generer
 	@FXML
 	private void handlegenerer() {
 		if (file != null) {
@@ -69,7 +70,7 @@ public class rootQcmMixListener {
 				textarea.setWrapText(true);
 				textarea.setStyle("-fx-text-fill: green; -fx-font-size: 15;");
 				textarea.setText(
-						"Opération validée, il y a 4 versions d'examens dans la dossier Examen.");
+						"Opération bien effectuée, vous trouvez 4 versions d'examens dans le dossier Examen.");
 			} else {
 				textarea.setWrapText(true);
 				textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
@@ -85,6 +86,7 @@ public class rootQcmMixListener {
 
 	}
 
+	// Affichage des erreurs dans la console pour le boutton ouvrir
 	@FXML
 	private void openLink() {
 		if (file != null) {
@@ -92,11 +94,13 @@ public class rootQcmMixListener {
 				opendossier.openlink(filelink);
 			} else {
 				textarea.setWrapText(true);
+				textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
 				textarea.setText("Appuyez d'abord sur le boutton generer.");
 			}
 
 		} else {
 			textarea.setWrapText(true);
+			textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
 			textarea.setText("Choisissez votre fichier source d'abord s'il vous plait.");
 		}
 

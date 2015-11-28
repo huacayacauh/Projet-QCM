@@ -33,7 +33,7 @@ public class GenererXLS {
 	IsBlankRow isblankrow = new IsBlankRow();
 	TestErreur test = new TestErreur();
 
-	// lire le document et generer quatre fichers
+	// lire le document et generer 4 versions d'examens
 	@SuppressWarnings("deprecation")
 	public File readXLS(File file) {
 		try {
@@ -41,8 +41,8 @@ public class GenererXLS {
 			fileXls = new POIFSFileSystem(fis);
 			workBook = new HSSFWorkbook(fileXls);
 			sheet = workBook.getSheetAt(0);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (IOException e)
+		{
 			e.printStackTrace();
 		}
 
@@ -252,17 +252,18 @@ public class GenererXLS {
 		}
 		FileOutputStream[] file = new FileOutputStream[4];
 
+		// ecriture des fichiers généres dans un dossier ExamGen
 		try {
 			for (int r = 0; r < 4; r++) {
-				file[r] = new FileOutputStream("Examen/Examen" + (r + 1) + ".xls");
+				file[r] = new FileOutputStream("ExamGen/ExamenV" + (r + 1) + ".xls");
 				workbook[r].write(file[r]);
 				file[r].flush();
 				file[r].close();
 
 				if (erreurs.size() != 0) {
-					File efile = new File("Examen/ErreursRapport.txt");
+					File efile = new File("Examen/ErreursLog.txt");
 					FileWriter fw = new FileWriter(efile);
-					String s = "Le fichier source contient des choix contennant des caractéres gras,"
+					String s = "Le fichier source contient des choix avec des caractéres gras,"
 							+ " vérifiez les fichiers générés."
 							+ System.getProperty("line.separator");
 					;
@@ -277,9 +278,8 @@ public class GenererXLS {
 				}
 			}
 			erreurs.clear();
-			System.out.println("ok;");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (IOException e)
+		{
 			e.printStackTrace();
 		}
 

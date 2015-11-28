@@ -10,7 +10,7 @@ import mainQcmMix.model.Qcm;
 public class TestErreur {
 	int flag = 1;
 	Qcm qcm = null;
-	List<String> errers = new ArrayList<String>();
+	List<String> erreurs = new ArrayList<String>();
 
 	public List<String> testErreurs(TreeMap<Integer, Qcm> qcmList) {
 		for (Entry<Integer, Qcm> entry : qcmList.entrySet()) {
@@ -20,17 +20,17 @@ public class TestErreur {
 				if (qcm.getChoix1().getString().isEmpty()) {
 					qcm.setFlaga(false);
 					String sa = "Dans la source, la question " + flag + " A est perdu";
-					errers.add(sa);
+					erreurs.add(sa);
 				}
 				if (qcm.getChoix2().getString().isEmpty()) {
 					qcm.setFlagb(false);
 					String sb = "Dans la source, la question " + flag + " B est perdu";
-					errers.add(sb);
+					erreurs.add(sb);
 				}
 				if (qcm.getChoix3().getString().isEmpty()) {
 					qcm.setFlagc(false);
 					String sc = "Dans la source, la question " + flag + " C est perdu";
-					errers.add(sc);
+					erreurs.add(sc);
 				}
 				if (qcm.getChoix4().getString().isEmpty()) {
 					qcm.setFlagd(false);
@@ -39,12 +39,12 @@ public class TestErreur {
 			} else {
 				String ss = "Dans le fichier source, On ne trouve pas la question: " + flag
 						+ ", la structure a été presérvée dans les fichiers générés.";
-				errers.add(ss);
+				erreurs.add(ss);
 				flag = id;
 			}
 			flag++;
 		}
-		return errers;
+		return erreurs;
 	}
 
 }

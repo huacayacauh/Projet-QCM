@@ -1,0 +1,82 @@
+                                                       IMPORTANTS
+                                                                     
+=== A. Rendu ===
+
+Le rendu durera ~20 minutes.
+Il prendra à peu près la même forme qu'une réunion de fin de sprint.
+Voici quelques passages obligés:
+
+
+1] Une démonstration incluant
+- installation à partir de rien, rapidement
+- utilisation de base
+- utilisation plus avancée (ex: reconfiguration du logiciel)
+- que se passe-t-il en cas de mauvaise utilisation?
+- quels sont les derniers bugs ou évolutions souhaitées?
+
+
+2] Une explication de ce que vous avez fait
+- rappel du point de départ
+- principales difficultés rencontrées
+- principaux choix technologiques
+- architecture
+
+
+3] Une inspection "qualité" / documentation
+- structuration et pérennité du code
+- commentaire de code (javadoc)
+- wiki
+
+=== B. Documentation ===
+
+Le Wiki est très important, et sera évalué.
+Il présente les informations suivantes de façon efficace, sans bla bla:
+0] A quoi sert le logiciel, en deux mots, auteurs et comment les contacter
+1] Manuel d'installation, débogage des problèmes de dépendances possibles
+2] Manuel d'utilisation
+- utilisation de base
+- utilisation avancée: tutoriels
+- format des fichiers de configuration
+3] Architecture globale du projet (UML?)
+4] Les principaux packages, guide de comment rentrer dans le code
+5] Explications des points techniques difficiles à comprendre si on lit simplement le code
+6] TODO liste des bugs et évolutions souhaitées
+7] Conseils à qui voudrait effectuer ces évolutions (Ex: "Comment faire évoluer la GUI?": où on explique qu'elle est indépendante du reste, juste interfacée de telle ou telle façon...)
+8] Tout ce qui serait utile à un M1 novice qui reprendrait votre code. 
+
+Les commentaires de code, eux, doivent couvrir notamment les principales API, ainsi que quelques points techniques difficiles. 
+
+
+=== C. Soumission du code ===
+
+
+Le dimanche 6.12 avant minuit vous aurez, sous github:
+- mis le code sous Licence libre si ce n'est pas déjà fait; voir https://help.github.com/articles/open-source-licensing/ et par ex: https://github.com/pja35/ReggaeMail/blob/master/LICENSE
+- ajouté Kevin en tant que collaborateur:
+GitHub > Le Projet > Settings > Collaborators > Add Collaborator : kevinperrot
+- transféré la propriété du projet à Pablo:
+GitHub > Le Projet > Settings > Options > Danger Zone > Transfer Ownership : pja35 
+(rien ne vous empêche bien sûr de conserver une copie de votre oeuvre, mais cela nous permettra aussi de la mettre à disposition des projets futurs.)
+
+
+
+Nous exécuterons ce code sur nos postes, assurez-vous que cela soit rapide et facile.
+
+
+=== D. Nos critères d'évaluation ===
+
+
+
+
+- FONCTIONNALITES : pertinence, qualité et quantité de fonctionnalités produites
+- PERENNITE : clarté, élégance, architecture, structuration, tests
+- DOCUMENTATION : Wiki, aspect du code
+- METHODOLOGIE : suivi de la méthode Scrum
+
+
+
+
+Merci!
+
+
+Kevin & Pablo

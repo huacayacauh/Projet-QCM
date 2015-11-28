@@ -26,7 +26,7 @@
                         <HBox layoutX="260.0" layoutY="112.0" spacing="40.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="30.0" />
                         <VBox layoutX="42.0" layoutY="23.0" spacing="15.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                            <children>
-                              <Label layoutX="42.0" layoutY="23.0" text="Choisir votre fichier:" textFill="#2e58ab">
+                              <Label layoutX="42.0" layoutY="23.0" text="Choisir votre fichier source:" textFill="#000611">
                                  <font>
                                     <Font name="Cambria" size="15.0" />
                                  </font>
@@ -34,7 +34,7 @@
                               <TextField fx:id="textfield" disable="true" layoutX="42.0" layoutY="51.0" prefHeight="25.0" prefWidth="400.0" />
                            </children>
                         </VBox>
-                        <Button defaultButton="true" layoutX="444.0" layoutY="55.0" mnemonicParsing="false" onAction="#handleParcourir" text="Parcourir" />
+                        <Button defaultButton="true" layoutX="429.0" layoutY="55.0" mnemonicParsing="false" onAction="#handleParcourir" prefHeight="25.0" prefWidth="79.0" text="Parcourir" />
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
@@ -43,7 +43,7 @@
                            <children>
                               <TextArea fx:id="textarea" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="-3.0" layoutY="1.0" prefHeight="147.0" prefWidth="390.0" scaleShape="false" text="Console de debogage . . ." AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="263.0" AnchorPane.topAnchor="1.0">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="15.0" />
                                  </font>
                               </TextArea>
                               <TextArea fx:id="textarea1" editable="false" layoutX="7.0" layoutY="11.0" prefHeight="147.0" prefWidth="208.0" text="Resultats:&#10;Examen1: &#10;       1 A 2 B 3 C 4 D&#10;Examen2: &#10;       1 B 2 A 3 D 4 C&#10;Examen3: &#10;       1 C 2 D 3 A 4 B&#10;Examen4: &#10;       1 D 2 C 3 B 4 A">
@@ -55,8 +55,8 @@
                         </HBox>
                         <HBox layoutX="430.0" layoutY="159.0" spacing="20.0" AnchorPane.rightAnchor="4.0">
                            <children>
-                              <Button defaultButton="true" layoutX="430.0" layoutY="159.0" mnemonicParsing="false" onAction="#handlegenerer" prefHeight="25.0" prefWidth="73.0" text="Generer" />
-                              <Button defaultButton="true" layoutX="529.0" layoutY="159.0" mnemonicParsing="false" onAction="#openLink" prefHeight="25.0" prefWidth="71.0" text="Link" />
+                              <Button defaultButton="true" layoutX="430.0" layoutY="159.0" mnemonicParsing="false" onAction="#handlegenerer" prefHeight="25.0" prefWidth="84.0" text="Generer" />
+                              <Button defaultButton="true" layoutX="529.0" layoutY="159.0" mnemonicParsing="false" onAction="#openLink" prefHeight="25.0" prefWidth="82.0" text="Ouvrir" />
                            </children>
                         </HBox>
                      </children>

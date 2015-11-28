@@ -28,6 +28,7 @@ public class MainQcmMix extends Application {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("QMC-MIX");
 		this.primaryStage.getIcons().add(new Image("file:resources/images/qcltitle.png"));
+		this.primaryStage.setResizable(false);
 		addQcmMixlistener();
 	}
 

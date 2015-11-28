@@ -46,14 +46,16 @@ public class rootQcmMixListener {
 		file = fileChooser.showOpenDialog(mainQcmMix.getPrimaryStage());
 
 		if (file == null) {
-			textfield.setText("choisir votre resources......");
+			textfield.setText("choisir votre votre fichier source");
 			textarea.setWrapText(true);
-			textarea.setText("votre resources sont perdu, choisissez un nouveau......");
+			textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
+			textarea.setText("Fichier perdu, choisissez de nouveau...");
 		} else {
 			path = file.getAbsolutePath();
 			textfield.setText(path);
 			textarea.setWrapText(true);
-			textarea.setText("votre resources sont bon, et ils sont dans :" + path);
+			textarea.setStyle("-fx-text-fill: green; -fx-font-size: 15;");
+			textarea.setText("Le fichier source a été bien chargé depuis: " + path);
 
 		}
 	}
@@ -65,16 +67,19 @@ public class rootQcmMixListener {
 			//if (filelink != null && filelink.list().length == 4) {
 			if (filelink != null) {
 				textarea.setWrapText(true);
+				textarea.setStyle("-fx-text-fill: green; -fx-font-size: 15;");
 				textarea.setText(
-						"C'est bon, il y a 4 examens dans la dossier Examen. il vous faut bien regarder des caract¨¨res gras dans la reponse.");
+						"Opération validée, il y a 4 versions d'examens dans la dossier Examen.");
 			} else {
 				textarea.setWrapText(true);
-				textarea.setText("la generation est ¨¦chec ,choisissez un nouveau ou d¨¦tectez votre source .");
+				textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
+				textarea.setText("la generation a echoué ,choisissez un nouveau fichier ou servez vous du rapport des erreurs pour corriger.");
 			}
 
 		} else {
 			textarea.setWrapText(true);
-			textarea.setText("choisissez votre sources, s'il vous plait.");
+			textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
+			textarea.setText("Choisissez votre fichier source d'abord s'il vous plait.");
 
 		}
 
@@ -87,12 +92,12 @@ public class rootQcmMixListener {
 				opendossier.openlink(filelink);
 			} else {
 				textarea.setWrapText(true);
-				textarea.setText("D'abord ,appuyez le botton generer.");
+				textarea.setText("Appuyez d'abord sur le boutton generer.");
 			}
 
 		} else {
 			textarea.setWrapText(true);
-			textarea.setText("choisissez votre sources, s'il vous plait.");
+			textarea.setText("Choisissez votre fichier source d'abord s'il vous plait.");
 		}
 
 	}

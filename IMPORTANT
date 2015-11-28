@@ -2,7 +2,6 @@
                                                                      
 === A. Rendu ===
 
-bonjour
 Le rendu durera ~20 minutes.
 Il prendra à peu près la même forme qu'une réunion de fin de sprint.
 Voici quelques passages obligés:
@@ -48,8 +47,7 @@ Il présente les informations suivantes de façon efficace, sans bla bla:
 Les commentaires de code, eux, doivent couvrir notamment les principales API, ainsi que quelques points techniques difficiles. 
 
 
-=== C. Soumission du code ===0000000
-
+=== C. Soumission du code ===
 
 
 Le dimanche 6.12 avant minuit vous aurez, sous github:
@@ -82,6 +80,3 @@ Merci!
 
 
 Kevin & Pablo
-
-
-

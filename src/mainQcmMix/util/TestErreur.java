@@ -8,44 +8,44 @@ import java.util.Map.Entry;
 import mainQcmMix.model.Qcm;
 
 public class TestErreur {
-	int flag = 1;
-	Qcm qcm = null;
-	List<String> errers = new ArrayList<String>();
+	static int flag = 1;
+	static Qcm qcm = null;
+	static List<String> erreurs = new ArrayList<String>();
 
-	public List<String> testErreurs(TreeMap<Integer, Qcm> qcmList) {
+	public static List<String> testerreurs(TreeMap<Integer, Qcm> qcmList) {
 		for (Entry<Integer, Qcm> entry : qcmList.entrySet()) {
 			int id = entry.getKey();
 			if (id == flag) {
 				qcm = entry.getValue();
 				if (qcm.getChoix1().getString().isEmpty()) {
 					qcm.setFlaga(false);
-					String sa = "Dans la source, la question " + flag + " A est perdu";
-					errers.add(sa);
+					String sa = "Dans la source, la question " + flag + " Choix A est perdu";
+					erreurs.add(sa);
 				}
 				if (qcm.getChoix2().getString().isEmpty()) {
 					qcm.setFlagb(false);
-					String sb = "Dans la source, la question " + flag + " B est perdu";
-					errers.add(sb);
+					String sb = "Dans la source, la question " + flag + " Choix B est perdu";
+					erreurs.add(sb);
 				}
 				if (qcm.getChoix3().getString().isEmpty()) {
 					qcm.setFlagc(false);
-					String sc = "Dans la source, la question " + flag + " C est perdu";
-					errers.add(sc);
+					String sc = "Dans la source, la question " + flag + " Choix C est perdu";
+					erreurs.add(sc);
 				}
 				if (qcm.getChoix4().getString().isEmpty()) {
 					qcm.setFlagd(false);
-					String sd = "Dans la source, la question " + flag + " D est perdu";
-					errers.add(sd);
+					String sd = "Dans la source, la question " + flag + " Choix D est perdu";
+					erreurs.add(sd);
 				}
 			} else {
 				String ss = "Dans le fichier source, On ne trouve pas la question: " + flag
-						+ ", la structure a é– ï¿½ presé–žvé–‘ dans les fichiers gé–šé–žé–Ÿ.";
-				errers.add(ss);
+						+ ", la structure a été rétabli dans les fichiers générés";
+				erreurs.add(ss);
 				flag = id;
 			}
 			flag++;
 		}
-		return errers;
+		return erreurs;
 	}
 
 }

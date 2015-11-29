@@ -12,7 +12,6 @@ public class openSources {
 	public FileChooser openSource() {
 
 		list.add("*.xls");
-		// list.add("*.doc");
 		FileChooser.ExtensionFilter extFilter = null;
 		FileChooser fileChooser = new FileChooser();
 		extFilter = new FileChooser.ExtensionFilter(".xls files", list);

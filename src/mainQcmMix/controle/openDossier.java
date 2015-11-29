@@ -6,6 +6,8 @@ import java.io.IOException;
 public class openDossier {
 
 	public void openlink(File file) {
+
+		// Ouvrir le dossier des examens generés selon l'OS
 		String filePath = file.getAbsolutePath();
 		Runtime runtime = null;
 		runtime = Runtime.getRuntime();

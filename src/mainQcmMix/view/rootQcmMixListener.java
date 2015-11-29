@@ -53,7 +53,7 @@ public class rootQcmMixListener {
 			textfield.setText(path);
 			textarea.setWrapText(true);
 			textarea.setStyle("-fx-text-fill: green; -fx-font-size: 15;");
-			textarea.setText("Le fichier source a deja bien charge depuis: " + path);
+			textarea.setText("Le fichier source a été bien chargé depuis: " + path);
 
 		}
 	}
@@ -62,7 +62,7 @@ public class rootQcmMixListener {
 	private void handlegenerer() {
 		if (file != null) {
 			FileChooser fc = new FileChooser();
-			fc.setInitialFileName("Examen");
+			fc.setInitialFileName("Examens");
 			fsave = fc.showSaveDialog(mainQcmMix.getPrimaryStage());
 			if (fsave != null) {
 
@@ -70,19 +70,18 @@ public class rootQcmMixListener {
 				if (filelink != null) {
 					textarea.setWrapText(true);
 					textarea.setStyle("-fx-text-fill: green; -fx-font-size: 15;");
-					textarea.setText("Operation valide, il y a 4 versions d'examens dans la dossier Examen.");
+					textarea.setText("Operation validée, il y a 4 versions d'examens dans la dossier Examens.");
 
 				} else {
 					textarea.setWrapText(true);
 					textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
-					textarea.setText(
-							"la generation a echouc ,choisissez un nouveau fichier ou servez vous du rapport des erreurs pour corriger.");
+					textarea.setText("la generation a echoué ,regarder le rapport des erreurs !");
 				}
 
 			}else{
 				textarea.setWrapText(true);
-				textarea.setStyle("-fx-text-fill: green; -fx-font-size: 15;");
-				textarea.setText("Choisissez votre dossiers....");
+				textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
+				textarea.setText("Choisir le dossier déstination...");
 			}
 		} else {
 			textarea.setWrapText(true);
@@ -100,11 +99,13 @@ public class rootQcmMixListener {
 				opendossier.openlink(filelink);
 			} else {
 				textarea.setWrapText(true);
+				textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
 				textarea.setText("Appuyez d'abord sur le boutton generer.");
 			}
 
 		} else {
 			textarea.setWrapText(true);
+			textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
 			textarea.setText("Choisissez votre fichier source d'abord s'il vous plait.");
 		}
 

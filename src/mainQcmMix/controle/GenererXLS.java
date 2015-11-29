@@ -29,7 +29,6 @@ public class GenererXLS {
 	TreeMap<Integer, Qcm> qcmList = new TreeMap<Integer, Qcm>();
 	List<String> erreurs = new ArrayList<String>();
 	IsBlankRow isblankrow = new IsBlankRow();
-	TestErreur test = new TestErreur();
 
 	// lire le document et generer quatre fichers
 	public File readXLS(File file,File filet) {
@@ -150,7 +149,7 @@ public class GenererXLS {
 	}
 
 	public void exportXls(TreeMap<Integer, Qcm> qcmList, File filet, POIFSFileSystem fis) {
-		erreurs = test.testErreurs(qcmList);
+		erreurs = TestErreur.testerreurs(qcmList);
 		HSSFWorkbook[] workbook = new HSSFWorkbook[4];
 		try {
 			workbook[0] = new HSSFWorkbook(fis);
@@ -244,17 +243,16 @@ public class GenererXLS {
 
 		try {
 			for (int r = 0; r < 4; r++) {
-				file[r] = new FileOutputStream(path+"/Examen" + (r + 1) + ".xls");
+				file[r] = new FileOutputStream(path+"/ExamenV" + (r + 1) + ".xls");
 				workbook[r].write(file[r]);
 				file[r].flush();
 				file[r].close();
 
 				if (erreurs.size() != 0) {
-					File efile = new File(path+"/ErreursRapport.txt");
+					File efile = new File(path+"/ErrorsLog.txt");
 					FileWriter fw = new FileWriter(efile);
-					String s = "Le fichier source contient des choix contennant des caracteres gras,"
-							+ " veifiez les fichiers gras." + System.getProperty("line.separator");
-					;
+					String s = "Le fichier source contient des choix avec des caracteres gras,"
+							+ " verifiez les fichiers générés." + System.getProperty("line.separator");
 					fw.write(s);
 					fw.flush();
 					for (int j = 0; j < erreurs.size(); j++) {
@@ -266,7 +264,6 @@ public class GenererXLS {
 				}
 			}
 			erreurs.clear();
-			System.out.println("ok;");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

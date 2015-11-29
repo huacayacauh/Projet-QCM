@@ -26,7 +26,7 @@ public class MainQcmMix extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("QMC-MIX");
+		this.primaryStage.setTitle("QCM-MIX");
 		this.primaryStage.getIcons().add(new Image("file:resources/images/qcltitle.png"));
 		this.primaryStage.setResizable(false);
 		addQcmMixlistener();

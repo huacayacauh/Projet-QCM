@@ -29,6 +29,7 @@ public class GenererXLS {
 	TreeMap<Integer, Qcm> qcmList = new TreeMap<Integer, Qcm>();
 	List<String> erreurs = new ArrayList<String>();
 	IsBlankRow isblankrow = new IsBlankRow();
+	public static boolean errors = false;
 
 	// lire le document et generer quatre fichers
 	public File readXLS(File file,File filet) {
@@ -259,6 +260,7 @@ public class GenererXLS {
 						String ss = erreurs.get(j) + System.getProperty("line.separator");
 						fw.write(ss);
 						fw.flush();
+						errors = true;
 					}
 					fw.close();
 				}

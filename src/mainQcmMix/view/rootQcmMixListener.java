@@ -70,8 +70,13 @@ public class rootQcmMixListener {
 				if (filelink != null) {
 					textarea.setWrapText(true);
 					textarea.setStyle("-fx-text-fill: green; -fx-font-size: 15;");
-					textarea.setText("Operation validée, il y a 4 versions d'examens dans la dossier Examens.");
-
+					if(!GenererXLS.errors){
+						textarea.setText("Operation validée, il y a 4 versions d'examens dans la dossier Examens.");
+					}
+					else
+					{
+						textarea.setText("Operation validée mais regardez ErrorLog, il y a 4 versions d'examens dans la dossier Examens.");
+					}
 				} else {
 					textarea.setWrapText(true);
 					textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");

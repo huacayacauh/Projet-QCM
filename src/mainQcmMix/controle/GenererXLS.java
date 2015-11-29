@@ -1,12 +1,10 @@
 package mainQcmMix.controle;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.util.Map.Entry;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,16 +31,15 @@ public class GenererXLS {
 	IsBlankRow isblankrow = new IsBlankRow();
 	TestErreur test = new TestErreur();
 
-	// lire le document et generer 4 versions d'examens
-	@SuppressWarnings("deprecation")
-	public File readXLS(File file) {
+	// lire le document et generer quatre fichers
+	public File readXLS(File file,File filet) {
 		try {
 			FileInputStream fis = new FileInputStream(file);
 			fileXls = new POIFSFileSystem(fis);
 			workBook = new HSSFWorkbook(fileXls);
 			sheet = workBook.getSheetAt(0);
-		} catch (IOException e)
-		{
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -68,21 +65,14 @@ public class GenererXLS {
 			}
 		}
 
-		File filet = null;
+
 		if (!qcmList.isEmpty()) {
-			filet = new File("Examen");
 			if (!filet.exists()) {
 				filet.mkdir();
-
 			}
-		} else {
-			System.out.println("qcmlist est null");
-			return filet;
+			exportXls(qcmList, filet, fileXls);
 		}
-
-		exportXls(qcmList, filet, fileXls);
 		return filet;
-
 	}
 
 	// prendre la chaque qestions, et mis dans le qcm
@@ -171,14 +161,12 @@ public class GenererXLS {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		HSSFSheet sheet1 = workbook[0].getSheetAt(0);
 		HSSFSheet sheet2 = workbook[1].getSheetAt(0);
 		HSSFSheet sheet3 = workbook[2].getSheetAt(0);
 		HSSFSheet sheet4 = workbook[3].getSheetAt(0);
 
 		HSSFRow row;
 		HSSFCell cell;
-		int i = 1;
 		for (Entry<Integer, Qcm> entry : qcmList.entrySet()) {
 			int id = entry.getKey();
 			int pl = entry.getValue().getPl();
@@ -251,21 +239,21 @@ public class GenererXLS {
 			}
 		}
 		FileOutputStream[] file = new FileOutputStream[4];
+		String path = "";
+		path = filet.getAbsolutePath();
 
-		// ecriture des fichiers généres dans un dossier ExamGen
 		try {
 			for (int r = 0; r < 4; r++) {
-				file[r] = new FileOutputStream("ExamGen/ExamenV" + (r + 1) + ".xls");
+				file[r] = new FileOutputStream(path+"/Examen" + (r + 1) + ".xls");
 				workbook[r].write(file[r]);
 				file[r].flush();
 				file[r].close();
 
 				if (erreurs.size() != 0) {
-					File efile = new File("Examen/ErreursLog.txt");
+					File efile = new File(path+"/ErreursRapport.txt");
 					FileWriter fw = new FileWriter(efile);
-					String s = "Le fichier source contient des choix avec des caractéres gras,"
-							+ " vérifiez les fichiers générés."
-							+ System.getProperty("line.separator");
+					String s = "Le fichier source contient des choix contennant des caracteres gras,"
+							+ " veifiez les fichiers gras." + System.getProperty("line.separator");
 					;
 					fw.write(s);
 					fw.flush();
@@ -278,11 +266,11 @@ public class GenererXLS {
 				}
 			}
 			erreurs.clear();
-		} catch (IOException e)
-		{
+			System.out.println("ok;");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
-
 }

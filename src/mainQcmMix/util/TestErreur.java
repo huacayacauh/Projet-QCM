@@ -10,7 +10,7 @@ import mainQcmMix.model.Qcm;
 public class TestErreur {
 	int flag = 1;
 	Qcm qcm = null;
-	List<String> erreurs = new ArrayList<String>();
+	List<String> errers = new ArrayList<String>();
 
 	public List<String> testErreurs(TreeMap<Integer, Qcm> qcmList) {
 		for (Entry<Integer, Qcm> entry : qcmList.entrySet()) {
@@ -20,31 +20,32 @@ public class TestErreur {
 				if (qcm.getChoix1().getString().isEmpty()) {
 					qcm.setFlaga(false);
 					String sa = "Dans la source, la question " + flag + " A est perdu";
-					erreurs.add(sa);
+					errers.add(sa);
 				}
 				if (qcm.getChoix2().getString().isEmpty()) {
 					qcm.setFlagb(false);
 					String sb = "Dans la source, la question " + flag + " B est perdu";
-					erreurs.add(sb);
+					errers.add(sb);
 				}
 				if (qcm.getChoix3().getString().isEmpty()) {
 					qcm.setFlagc(false);
 					String sc = "Dans la source, la question " + flag + " C est perdu";
-					erreurs.add(sc);
+					errers.add(sc);
 				}
 				if (qcm.getChoix4().getString().isEmpty()) {
 					qcm.setFlagd(false);
 					String sd = "Dans la source, la question " + flag + " D est perdu";
+					errers.add(sd);
 				}
 			} else {
 				String ss = "Dans le fichier source, On ne trouve pas la question: " + flag
-						+ ", la structure a été presérvée dans les fichiers générés.";
-				erreurs.add(ss);
+						+ ", la structure a é– ï¿½ presé–žvé–‘ dans les fichiers gé–šé–žé–Ÿ.";
+				errers.add(ss);
 				flag = id;
 			}
 			flag++;
 		}
-		return erreurs;
+		return errers;
 	}
 
 }

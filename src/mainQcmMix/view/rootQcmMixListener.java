@@ -10,7 +10,6 @@ import mainQcmMix.MainQcmMix;
 import mainQcmMix.controle.openDossier;
 import mainQcmMix.controle.openSources;
 import mainQcmMix.controle.GenererXLS;
-import mainQcmMix.util.delete_file;
 
 public class rootQcmMixListener {
 
@@ -19,10 +18,10 @@ public class rootQcmMixListener {
 	openSources opensource = new openSources();
 	GenererXLS readxls = new GenererXLS();
 	openDossier opendossier = new openDossier();
-	delete_file delete = new delete_file();
 
 	String path = null;
 	File file = null;
+	File fsave = null;
 	File filelink = null;
 	String spath = null;
 	@FXML
@@ -40,43 +39,51 @@ public class rootQcmMixListener {
 
 	@FXML
 	private void handleParcourir() {
-		delete.deleteFile();
+		// if(fsave !=null) delete.deleteFile(fsave);
 		fileChooser = opensource.openSource();
 
 		file = fileChooser.showOpenDialog(mainQcmMix.getPrimaryStage());
-
 		if (file == null) {
 			textfield.setText("choisir votre votre fichier source");
 			textarea.setWrapText(true);
 			textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
-			textarea.setText("Aucun fichier choisi, parcourir de nouveau...");
+			textarea.setText("Fichier perdu, choisissez de nouveau...");
 		} else {
 			path = file.getAbsolutePath();
 			textfield.setText(path);
 			textarea.setWrapText(true);
 			textarea.setStyle("-fx-text-fill: green; -fx-font-size: 15;");
-			textarea.setText("Le fichier source a été bien chargé depuis: " + path);
+			textarea.setText("Le fichier source a deja bien charge depuis: " + path);
 
 		}
 	}
 
-	// Affichage des erreurs dans la console pour le boutton generer
 	@FXML
 	private void handlegenerer() {
 		if (file != null) {
-			filelink = readxls.readXLS(file);
-			//if (filelink != null && filelink.list().length == 4) {
-			if (filelink != null) {
+			FileChooser fc = new FileChooser();
+			fc.setInitialFileName("Examen");
+			fsave = fc.showSaveDialog(mainQcmMix.getPrimaryStage());
+			if (fsave != null) {
+
+				filelink = readxls.readXLS(file, fsave);
+				if (filelink != null) {
+					textarea.setWrapText(true);
+					textarea.setStyle("-fx-text-fill: green; -fx-font-size: 15;");
+					textarea.setText("Operation valide, il y a 4 versions d'examens dans la dossier Examen.");
+
+				} else {
+					textarea.setWrapText(true);
+					textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
+					textarea.setText(
+							"la generation a echouc ,choisissez un nouveau fichier ou servez vous du rapport des erreurs pour corriger.");
+				}
+
+			}else{
 				textarea.setWrapText(true);
 				textarea.setStyle("-fx-text-fill: green; -fx-font-size: 15;");
-				textarea.setText(
-						"Opération bien effectuée, vous trouvez 4 versions d'examens dans le dossier Examen.");
-			} else {
-				textarea.setWrapText(true);
-				textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
-				textarea.setText("la generation a echoué ,choisissez un nouveau fichier ou servez vous du rapport des erreurs pour corriger.");
+				textarea.setText("Choisissez votre dossiers....");
 			}
-
 		} else {
 			textarea.setWrapText(true);
 			textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
@@ -86,7 +93,6 @@ public class rootQcmMixListener {
 
 	}
 
-	// Affichage des erreurs dans la console pour le boutton ouvrir
 	@FXML
 	private void openLink() {
 		if (file != null) {
@@ -94,13 +100,11 @@ public class rootQcmMixListener {
 				opendossier.openlink(filelink);
 			} else {
 				textarea.setWrapText(true);
-				textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
 				textarea.setText("Appuyez d'abord sur le boutton generer.");
 			}
 
 		} else {
 			textarea.setWrapText(true);
-			textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
 			textarea.setText("Choisissez votre fichier source d'abord s'il vous plait.");
 		}
 

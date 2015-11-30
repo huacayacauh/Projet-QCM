@@ -32,7 +32,7 @@ public class GenererXLS {
 	static String path = "";
 	TestErreur te = new TestErreur();
 
-	// lire le document et generer quatre fichers
+	// lire le document et generer 4 fichers
 	public File readXLS(File file,File filet) {
 		try {
 			FileInputStream fis = new FileInputStream(file);
@@ -272,6 +272,7 @@ public class GenererXLS {
 
 	}
 
+	// tester si errorlog a été généré
 	public static boolean ExisteFile(){
 		File f = new File(path+"/ErrorsLog.txt");
 		if(f.exists() && !f.isDirectory()) {

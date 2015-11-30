@@ -25,7 +25,6 @@ public class rootQcmMixListener {
 	File fsave = null;
 	File filelink = null;
 	String spath = null;
-	
 	@FXML
 	private TextField textfield;
 	@FXML
@@ -72,16 +71,19 @@ public class rootQcmMixListener {
 					textarea.setWrapText(true);
 					textarea.setStyle("-fx-text-fill: green; -fx-font-size: 15;");
 					if(!GenererXLS.ExisteFile()){
-						textarea.setText("Operation validée, il y a 4 versions d'examens dans la dossier Examens.");
+						textarea.setText("Operation validée, il y a 4 versions d'examens dans le dossier "
+								+ filelink.getName());
 					}
 					else
 					{
-						textarea.setText("Operation validée mais regardez ErrorLog, il y a 4 versions d'examens dans la dossier Examens.");
+						textarea.setText("Operation validée, il y a 4 versions d'examens dans la dossier "
+								+ filelink.getName()
+								+ "\nAttention: Mauvaise structure dans la source, regardez ErrorLog !!");
 					}
 				} else {
 					textarea.setWrapText(true);
 					textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
-					textarea.setText("la generation a echoué ,regarder le rapport des erreurs !");
+					textarea.setText("la generation a echoué , regardez ErrorLog !");
 				}
 
 			}else{

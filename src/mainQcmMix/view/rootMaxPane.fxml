@@ -41,14 +41,9 @@
                      <children>
                         <HBox layoutX="-3.0" layoutY="1.0">
                            <children>
-                              <TextArea fx:id="textarea" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="-3.0" layoutY="1.0" prefHeight="147.0" prefWidth="390.0" scaleShape="false" text="Console de debogage . . ." AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="263.0" AnchorPane.topAnchor="1.0">
+                              <TextArea fx:id="textarea" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="-3.0" layoutY="1.0" prefHeight="150.0" prefWidth="610.0" scaleShape="false" text="Console de débogage . . ." AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="263.0" AnchorPane.topAnchor="1.0">
                                  <font>
                                     <Font size="15.0" />
-                                 </font>
-                              </TextArea>
-                              <TextArea fx:id="textarea1" editable="false" layoutX="7.0" layoutY="11.0" prefHeight="147.0" prefWidth="208.0" text="Resultats:&#10;Examen1: &#10;       1 A 2 B 3 C 4 D&#10;Examen2: &#10;       1 B 2 A 3 D 4 C&#10;Examen3: &#10;       1 C 2 D 3 A 4 B&#10;Examen4: &#10;       1 D 2 C 3 B 4 A">
-                                 <font>
-                                    <Font name="System Bold" size="11.0" />
                                  </font>
                               </TextArea>
                            </children>

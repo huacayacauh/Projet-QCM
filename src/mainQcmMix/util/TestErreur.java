@@ -9,11 +9,13 @@ import java.util.Map.Entry;
 import mainQcmMix.model.Qcm;
 
 public class TestErreur {
-	static int flag = 1;
+	int flag = 1;
 	static Qcm qcm = null;
-	static List<String> erreurs = new ArrayList<String>();
+	public static List<String> erreurs = new ArrayList<String>();
 
-	public static List<String> testerreurs(TreeMap<Integer, Qcm> qcmList) {
+	public List<String> testerreurs(TreeMap<Integer, Qcm> qcmList) {
+		erreurs.clear();
+		flag = 1;
 		for (Entry<Integer, Qcm> entry : qcmList.entrySet()) {
 			int id = entry.getKey();
 			if (id == flag) {
@@ -48,4 +50,5 @@ public class TestErreur {
 		}
 		return erreurs;
 	}
+
 }

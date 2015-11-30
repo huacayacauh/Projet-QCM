@@ -27,9 +27,10 @@ public class GenererXLS {
 	HSSFWorkbook workBook;
 	HSSFSheet sheet;
 	TreeMap<Integer, Qcm> qcmList = new TreeMap<Integer, Qcm>();
-	List<String> erreurs = new ArrayList<String>();
+	public List<String> erreurs = new ArrayList<String>();
 	IsBlankRow isblankrow = new IsBlankRow();
-	public static boolean errors = false;
+	static String path = "";
+	TestErreur te = new TestErreur();
 
 	// lire le document et generer quatre fichers
 	public File readXLS(File file,File filet) {
@@ -150,7 +151,7 @@ public class GenererXLS {
 	}
 
 	public void exportXls(TreeMap<Integer, Qcm> qcmList, File filet, POIFSFileSystem fis) {
-		erreurs = TestErreur.testerreurs(qcmList);
+		erreurs = te.testerreurs(qcmList);
 		HSSFWorkbook[] workbook = new HSSFWorkbook[4];
 		try {
 			workbook[0] = new HSSFWorkbook(fis);
@@ -239,7 +240,6 @@ public class GenererXLS {
 			}
 		}
 		FileOutputStream[] file = new FileOutputStream[4];
-		String path = "";
 		path = filet.getAbsolutePath();
 
 		try {
@@ -260,7 +260,6 @@ public class GenererXLS {
 						String ss = erreurs.get(j) + System.getProperty("line.separator");
 						fw.write(ss);
 						fw.flush();
-						errors = true;
 					}
 					fw.close();
 				}
@@ -271,5 +270,13 @@ public class GenererXLS {
 			e.printStackTrace();
 		}
 
+	}
+
+	public static boolean ExisteFile(){
+		File f = new File(path+"/ErrorsLog.txt");
+		if(f.exists() && !f.isDirectory()) {
+			return true;
+		}
+		return false;
 	}
 }

@@ -9,6 +9,7 @@ import javafx.stage.FileChooser;
 import mainQcmMix.MainQcmMix;
 import mainQcmMix.controle.openDossier;
 import mainQcmMix.controle.openSources;
+import mainQcmMix.util.TestErreur;
 import mainQcmMix.controle.GenererXLS;
 
 public class rootQcmMixListener {
@@ -65,12 +66,11 @@ public class rootQcmMixListener {
 			fc.setInitialFileName("Examens");
 			fsave = fc.showSaveDialog(mainQcmMix.getPrimaryStage());
 			if (fsave != null) {
-
 				filelink = readxls.readXLS(file, fsave);
 				if (filelink != null) {
 					textarea.setWrapText(true);
 					textarea.setStyle("-fx-text-fill: green; -fx-font-size: 15;");
-					if(!GenererXLS.errors){
+					if(!GenererXLS.ExisteFile()){
 						textarea.setText("Operation validée, il y a 4 versions d'examens dans la dossier Examens.");
 					}
 					else

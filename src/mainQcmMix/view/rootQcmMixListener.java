@@ -9,7 +9,6 @@ import javafx.stage.FileChooser;
 import mainQcmMix.MainQcmMix;
 import mainQcmMix.controle.openDossier;
 import mainQcmMix.controle.openSources;
-import mainQcmMix.util.TestErreur;
 import mainQcmMix.controle.GenererXLS;
 
 public class rootQcmMixListener {
@@ -54,7 +53,7 @@ public class rootQcmMixListener {
 			textfield.setText(path);
 			textarea.setWrapText(true);
 			textarea.setStyle("-fx-text-fill: green; -fx-font-size: 15;");
-			textarea.setText("Le fichier source a été bien chargé depuis: " + path);
+			textarea.setText("Le fichier source a Ã©tÃ© bien chargÃ© depuis: " + path);
 
 		}
 	}
@@ -70,26 +69,24 @@ public class rootQcmMixListener {
 				if (filelink != null) {
 					textarea.setWrapText(true);
 					textarea.setStyle("-fx-text-fill: green; -fx-font-size: 15;");
-					if(!GenererXLS.ExisteFile()){
-						textarea.setText("Operation validée, il y a 4 versions d'examens dans le dossier "
-								+ filelink.getName());
-					}
-					else
-					{
-						textarea.setText("Operation validée, il y a 4 versions d'examens dans la dossier "
-								+ filelink.getName()
-								+ "\nAttention: Mauvaise structure dans la source, regardez ErrorLog !!");
+					if (!GenererXLS.ExisteFile()) {
+						textarea.setText(
+								"Operation validÃ©e, il y a 4 versions d'examens dans le dossier " + filelink.getName());
+					} else {
+						textarea.setText(
+								"Operation validÃ©e, il y a 4 versions d'examens dans la dossier " + filelink.getName()
+										+ "\nAttention: Mauvaise structure dans la source, regardez ErrorLog !!");
 					}
 				} else {
 					textarea.setWrapText(true);
 					textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
-					textarea.setText("la generation a echoué , regardez ErrorLog !");
+					textarea.setText("la generation a echouÃ© , regardez ErrorLog !");
 				}
 
-			}else{
+			} else {
 				textarea.setWrapText(true);
 				textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
-				textarea.setText("Choisir le dossier déstination...");
+				textarea.setText("Choisir le dossier dÃ©stination...");
 			}
 		} else {
 			textarea.setWrapText(true);

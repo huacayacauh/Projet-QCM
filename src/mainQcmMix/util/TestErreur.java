@@ -10,7 +10,6 @@ import mainQcmMix.model.Qcm;
 
 public class TestErreur {
 	int flag = 1;
-	int flagid = 0;
 	static Qcm qcm = null;
 	public List<String> erreurs = new ArrayList<String>();
 
@@ -42,9 +41,11 @@ public class TestErreur {
 					erreurs.add(sd);
 				}
 			} else {
-				String ss = "Dans le fichier source, On ne trouve pas la question: " + flag
+				int f = id - flag;
+				for(int i=0; i<f; i++){
+				String ss = "Dans le fichier source, On ne trouve pas la question: " + (flag+i)
 						+ ", la structure source a été préservée dans les fichiers générés";
-				erreurs.add(ss);
+				erreurs.add(ss);}
 				flag = id;
 			}
 			flag++;

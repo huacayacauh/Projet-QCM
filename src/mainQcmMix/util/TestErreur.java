@@ -9,42 +9,48 @@ import mainQcmMix.model.Qcm;
 
 public class TestErreur {
 	int flag = 1;
-	Qcm qcm = null;
-	List<String> errers = new ArrayList<String>();
+	int flagid = 0;
+	static Qcm qcm = null;
+	public List<String> erreurs = new ArrayList<String>();
 
-	public List<String> testErreurs(TreeMap<Integer, Qcm> qcmList) {
+	public List<String> testerreurs(TreeMap<Integer, Qcm> qcmList) {
+		flag = 1;
 		for (Entry<Integer, Qcm> entry : qcmList.entrySet()) {
 			int id = entry.getKey();
 			if (id == flag) {
 				qcm = entry.getValue();
 				if (qcm.getChoix1().getString().isEmpty()) {
 					qcm.setFlaga(false);
-					String sa = "Dans la source, la question " + flag + " A est perdu";
-					errers.add(sa);
+					String sa = "Dans la source, la question " + flag + " Choix a est inspecifiÃ©";
+					erreurs.add(sa);
 				}
 				if (qcm.getChoix2().getString().isEmpty()) {
 					qcm.setFlagb(false);
-					String sb = "Dans la source, la question " + flag + " B est perdu";
-					errers.add(sb);
+					String sb = "Dans la source, la question " + flag + " Choix b est inspecifiÃ©";
+					erreurs.add(sb);
 				}
 				if (qcm.getChoix3().getString().isEmpty()) {
 					qcm.setFlagc(false);
-					String sc = "Dans la source, la question " + flag + " C est perdu";
-					errers.add(sc);
+					String sc = "Dans la source, la question " + flag + " Choix c est inspecifiÃ©";
+					erreurs.add(sc);
 				}
 				if (qcm.getChoix4().getString().isEmpty()) {
 					qcm.setFlagd(false);
-					String sd = "Dans la source, la question " + flag + " D est perdu";
+					String sd = "Dans la source, la question " + flag + " Choix d est inspecifiÃ©";
+					erreurs.add(sd);
 				}
 			} else {
-				String ss = "Dans le fichier source, On ne trouve pas la question: " + flag
-						+ ", la structure a été presérvée dans les fichiers générés.";
-				errers.add(ss);
+				int f = id - flag;
+				for (int i = 0; i < f; i++) {
+					String ss = "Dans le fichier source, On ne trouve pas la question: " + (flag+i)
+							+ ", la structure source a Ã©tÃ© prÃ©servÃ©e dans les fichiers gÃ©nÃ©rÃ©s";
+					erreurs.add(ss);
+				}
 				flag = id;
 			}
 			flag++;
 		}
-		return errers;
+		return erreurs;
 	}
 
 }

@@ -10,7 +10,6 @@ import mainQcmMix.MainQcmMix;
 import mainQcmMix.controle.openDossier;
 import mainQcmMix.controle.openSources;
 import mainQcmMix.controle.GenererXLS;
-import mainQcmMix.util.delete_file;
 
 public class rootQcmMixListener {
 
@@ -19,10 +18,10 @@ public class rootQcmMixListener {
 	openSources opensource = new openSources();
 	GenererXLS readxls = new GenererXLS();
 	openDossier opendossier = new openDossier();
-	delete_file delete = new delete_file();
 
 	String path = null;
 	File file = null;
+	File fsave = null;
 	File filelink = null;
 	String spath = null;
 	@FXML
@@ -40,11 +39,10 @@ public class rootQcmMixListener {
 
 	@FXML
 	private void handleParcourir() {
-		delete.deleteFile();
+		// if(fsave !=null) delete.deleteFile(fsave);
 		fileChooser = opensource.openSource();
 
 		file = fileChooser.showOpenDialog(mainQcmMix.getPrimaryStage());
-
 		if (file == null) {
 			textfield.setText("choisir votre votre fichier source");
 			textarea.setWrapText(true);
@@ -55,7 +53,7 @@ public class rootQcmMixListener {
 			textfield.setText(path);
 			textarea.setWrapText(true);
 			textarea.setStyle("-fx-text-fill: green; -fx-font-size: 15;");
-			textarea.setText("Le fichier source a ÈtÈ bien chargÈ depuis: " + path);
+			textarea.setText("Le fichier source a √©t√© bien charg√© depuis: " + path);
 
 		}
 	}
@@ -63,19 +61,33 @@ public class rootQcmMixListener {
 	@FXML
 	private void handlegenerer() {
 		if (file != null) {
-			filelink = readxls.readXLS(file);
-			//if (filelink != null && filelink.list().length == 4) {
-			if (filelink != null) {
-				textarea.setWrapText(true);
-				textarea.setStyle("-fx-text-fill: green; -fx-font-size: 15;");
-				textarea.setText(
-						"OpÈration validÈe, il y a 4 versions d'examens dans la dossier Examen.");
+			FileChooser fc = new FileChooser();
+			fc.setInitialFileName("Examens");
+			fsave = fc.showSaveDialog(mainQcmMix.getPrimaryStage());
+			if (fsave != null) {
+				filelink = readxls.readXLS(file, fsave);
+				if (filelink != null) {
+					textarea.setWrapText(true);
+					textarea.setStyle("-fx-text-fill: green; -fx-font-size: 15;");
+					if (!GenererXLS.ExisteFile()) {
+						textarea.setText(
+								"Operation valid√©e, il y a 4 versions d'examens dans le dossier " + filelink.getName());
+					} else {
+						textarea.setText(
+								"Operation valid√©e, il y a 4 versions d'examens dans la dossier " + filelink.getName()
+										+ "\nAttention: Mauvaise structure dans la source, regardez ErrorLog !!");
+					}
+				} else {
+					textarea.setWrapText(true);
+					textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
+					textarea.setText("la generation a echou√© , regardez ErrorLog !");
+				}
+
 			} else {
 				textarea.setWrapText(true);
 				textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
-				textarea.setText("la generation a echouÈ ,choisissez un nouveau fichier ou servez vous du rapport des erreurs pour corriger.");
+				textarea.setText("Choisir le dossier d√©stination...");
 			}
-
 		} else {
 			textarea.setWrapText(true);
 			textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
@@ -92,11 +104,13 @@ public class rootQcmMixListener {
 				opendossier.openlink(filelink);
 			} else {
 				textarea.setWrapText(true);
+				textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
 				textarea.setText("Appuyez d'abord sur le boutton generer.");
 			}
 
 		} else {
 			textarea.setWrapText(true);
+			textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
 			textarea.setText("Choisissez votre fichier source d'abord s'il vous plait.");
 		}
 

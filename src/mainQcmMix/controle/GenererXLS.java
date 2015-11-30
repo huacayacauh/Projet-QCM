@@ -27,13 +27,15 @@ public class GenererXLS {
 	HSSFWorkbook workBook;
 	HSSFSheet sheet;
 	TreeMap<Integer, Qcm> qcmList = new TreeMap<Integer, Qcm>();
-	public List<String> erreurs = new ArrayList<String>();
+	List<String> erreurs = new ArrayList<String>();
+	List<String> erreur = null;
 	IsBlankRow isblankrow = new IsBlankRow();
 	static String path = "";
 	TestErreur te = new TestErreur();
 
 	// lire le document et generer 4 fichers
-	public File readXLS(File file,File filet) {
+	public File readXLS(File file, File filet) {
+		erreurs.clear();
 		try {
 			FileInputStream fis = new FileInputStream(file);
 			fileXls = new POIFSFileSystem(fis);
@@ -57,15 +59,32 @@ public class GenererXLS {
 				cell2 = hrow.getCell(pc2);
 				if (!isblankrow.isBlankrow(hrow) && cell1 != null && cell1.getCellType() == 0) {
 					int id = (int) cell1.getNumericCellValue();
-					qcmList.put(id, prendreQcm(id, i, pc1, sheet));
+					Qcm qcm = new Qcm();
+					qcm = prendreQcm(id, i, pc1, sheet);
+					if (qcmList.containsKey(qcm.getId())) {
+						String s = "La Question: " + qcm.getId()
+								+ " existe d¨¦j¨¤, il fault modifier le num¨¦ro de la question qui est ¨¤ la line: "
+								+ (qcm.getPl() + 1) + " , collone: " + (qcm.getPc() + 1);
+						erreurs.add(s);
+					} else {
+						qcmList.put(id, qcm);
+					}
 				}
 				if (!isblankrow.isBlankrow(hrow) && cell2 != null && cell2.getCellType() == 0) {
 					int id = (int) cell2.getNumericCellValue();
-					qcmList.put(id, prendreQcm(id, i, pc2, sheet));
+					Qcm qcm = new Qcm();
+					qcm = prendreQcm(id, i, pc2, sheet);
+					if (qcmList.containsKey(qcm.getId())) {
+						String s = "La Question " + qcm.getId()
+								+ "existe d¨¦j¨¤, il fault modifier le num¨¦ro de question que est ¨¤ la line: "
+								+ (qcm.getPl() + 1) + ", collone: " + (qcm.getPc() + 1);
+						erreurs.add(s);
+					} else {
+						qcmList.put(id, qcm);
+					}
 				}
 			}
 		}
-
 
 		if (!qcmList.isEmpty()) {
 			if (!filet.exists()) {
@@ -151,7 +170,15 @@ public class GenererXLS {
 	}
 
 	public void exportXls(TreeMap<Integer, Qcm> qcmList, File filet, POIFSFileSystem fis) {
-		erreurs = te.testerreurs(qcmList);
+
+		erreur = new ArrayList<String>();
+		erreur = te.testerreurs(qcmList);
+		for(int i=0;i<erreur.size();i++){
+
+			String s = erreur.get(i);
+			erreurs.add(s);
+		}
+
 		HSSFWorkbook[] workbook = new HSSFWorkbook[4];
 		try {
 			workbook[0] = new HSSFWorkbook(fis);
@@ -244,27 +271,26 @@ public class GenererXLS {
 
 		try {
 			for (int r = 0; r < 4; r++) {
-				file[r] = new FileOutputStream(path+"/ExamenV" + (r + 1) + ".xls");
+				file[r] = new FileOutputStream(path + "/ExamenV" + (r + 1) + ".xls");
 				workbook[r].write(file[r]);
 				file[r].flush();
 				file[r].close();
-
-				if (erreurs.size() != 0) {
-					File efile = new File(path+"/ErrorsLog.txt");
-					FileWriter fw = new FileWriter(efile);
-					String s = "Le fichier source contient des choix avec des caracteres gras,"
-							+ " verifiez les fichiers générés." + System.getProperty("line.separator");
-					fw.write(s);
-					fw.flush();
-					for (int j = 0; j < erreurs.size(); j++) {
-						String ss = erreurs.get(j) + System.getProperty("line.separator");
-						fw.write(ss);
-						fw.flush();
-					}
-					fw.close();
-				}
 			}
-			erreurs.clear();
+
+			if (erreurs.size() != 0) {
+				File efile = new File(path + "/ErrorsLog.txt");
+				FileWriter fw = new FileWriter(efile);
+				String s = "Le fichier source contient des choix avec des caracteres gras,"
+						+ " verifiez les fichiers g¨¦n¨¦r¨¦s." + System.getProperty("line.separator");
+				fw.write(s);
+				fw.flush();
+				for (int j = 0; j < erreurs.size(); j++) {
+					String ss = erreurs.get(j) + System.getProperty("line.separator");
+					fw.write(ss);
+					fw.flush();
+				}
+				fw.close();
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -272,10 +298,10 @@ public class GenererXLS {
 
 	}
 
-	// tester si errorlog a été généré
-	public static boolean ExisteFile(){
-		File f = new File(path+"/ErrorsLog.txt");
-		if(f.exists() && !f.isDirectory()) {
+	// tester si errorlog a ¨¦t¨¦ g¨¦n¨¦r¨¦
+	public static boolean ExisteFile() {
+		File f = new File(path + "/ErrorsLog.txt");
+		if (f.exists() && !f.isDirectory()) {
 			return true;
 		}
 		return false;

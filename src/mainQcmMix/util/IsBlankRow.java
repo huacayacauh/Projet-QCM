@@ -6,6 +6,8 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 public class IsBlankRow {
 
 	public boolean isBlankrow(HSSFRow hrow){
+
+		// récupére le contenu d'une cellule selon son type ( teste aussi si la cellule est vide)
 		if(hrow == null) return true;
 		boolean result = true;
 		for(int i =0;i<hrow.getLastCellNum();i++){

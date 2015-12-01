@@ -11,6 +11,7 @@ public class openSources {
 
 	public FileChooser openSource() {
 
+		// choisir le fichier .xls depuis la source
 		list.add("*.xls");
 		FileChooser.ExtensionFilter extFilter = null;
 		FileChooser fileChooser = new FileChooser();

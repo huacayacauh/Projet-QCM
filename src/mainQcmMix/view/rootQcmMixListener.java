@@ -39,7 +39,7 @@ public class rootQcmMixListener {
 
 	@FXML
 	private void handleParcourir() {
-		// if(fsave !=null) delete.deleteFile(fsave);
+		//
 		fileChooser = opensource.openSource();
 
 		file = fileChooser.showOpenDialog(mainQcmMix.getPrimaryStage());
@@ -53,7 +53,7 @@ public class rootQcmMixListener {
 			textfield.setText(path);
 			textarea.setWrapText(true);
 			textarea.setStyle("-fx-text-fill: green; -fx-font-size: 15;");
-			textarea.setText("Le fichier source a Ã©tÃ© bien chargÃ© depuis: " + path);
+			textarea.setText("Le fichier source a été bien chargé depuis: " + path);
 
 		}
 	}
@@ -71,22 +71,22 @@ public class rootQcmMixListener {
 					textarea.setStyle("-fx-text-fill: green; -fx-font-size: 15;");
 					if (!GenererXLS.ExisteFile()) {
 						textarea.setText(
-								"Operation validÃ©e, il y a 4 versions d'examens dans le dossier " + filelink.getName());
+								"Operation validée, il y a 4 versions d'examens dans le dossier " + filelink.getName());
 					} else {
 						textarea.setText(
-								"Operation validÃ©e, il y a 4 versions d'examens dans la dossier " + filelink.getName()
+								"Operation validée, il y a 4 versions d'examens dans la dossier " + filelink.getName()
 										+ "\nAttention: Mauvaise structure dans la source, regardez ErrorLog !!");
 					}
 				} else {
 					textarea.setWrapText(true);
 					textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
-					textarea.setText("la generation a echouÃ© , regardez ErrorLog !");
+					textarea.setText("la generation a echoué , regardez ErrorLog !");
 				}
 
 			} else {
 				textarea.setWrapText(true);
 				textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
-				textarea.setText("Choisir le dossier dÃ©stination...");
+				textarea.setText("Choisir le dossier déstination...");
 			}
 		} else {
 			textarea.setWrapText(true);

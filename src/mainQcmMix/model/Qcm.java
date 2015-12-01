@@ -7,6 +7,7 @@ public class Qcm {
 	private int pl,pc;
 	private int al,ac,bl,bc,cl,cc,dl,dc;
 
+	// servit à préserver les caractéres gras dans une cellule
 	private HSSFRichTextString choix1 = new HSSFRichTextString("");
 	private HSSFRichTextString choix2 = new HSSFRichTextString("");
 	private HSSFRichTextString choix3 = new HSSFRichTextString("");

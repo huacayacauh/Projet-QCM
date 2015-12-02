@@ -15,7 +15,7 @@ public class openDossier {
 			String s = System.getProperties().getProperty("os.name");
 			if (s.contains("Windows")) {
 				runtime.exec("cmd /c start explorer /select,/e, " + filePath);
-			} else if (s.contains("Lunix")) {
+			} else if (s.contains("Linux")) {
 				runtime.exec("nautilus " + filePath);
 			}
 		} catch (IOException ex) {

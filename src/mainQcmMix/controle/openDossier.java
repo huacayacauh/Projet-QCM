@@ -7,7 +7,7 @@ public class openDossier {
 
 	public void openlink(File file) {
 
-		// Ouvrir le dossier des examens generés selon l'OS
+		// Ouvrir le dossier des examens
 		String filePath = file.getAbsolutePath();
 		Runtime runtime = null;
 		runtime = Runtime.getRuntime();
@@ -15,7 +15,7 @@ public class openDossier {
 			String s = System.getProperties().getProperty("os.name");
 			if (s.contains("Windows")) {
 				runtime.exec("cmd /c start explorer /select,/e, " + filePath);
-			} else if (s.contains("Linux")) {
+			} else if (s.contains("Lunix")) {
 				runtime.exec("nautilus " + filePath);
 			}
 		} catch (IOException ex) {

@@ -33,24 +33,19 @@ public class MainQcmMix extends Application {
 	}
 
 	public void addQcmMixlistener() {
-
 		FXMLLoader loader = new FXMLLoader();
 		try {
-
 			loader.setLocation(MainQcmMix.class.getResource("view/rootMaxPane.fxml"));
 			rootQcmPane = (AnchorPane) loader.load();
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 		Scene scene = new Scene(rootQcmPane);
 		primaryStage.setScene(scene);
 		rootQcmMixListener rootlistener = loader.getController();
 		rootlistener.setMainQcmMix(this);
 		primaryStage.show();
 	}
-
 	public static void main(String[] args) {
 		launch(args);
 	}

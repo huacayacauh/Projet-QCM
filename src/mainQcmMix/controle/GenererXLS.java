@@ -38,7 +38,6 @@ public class GenererXLS {
 		erreurs.clear();
 		try {
 			FileInputStream fis = new FileInputStream(file);
-			System.out.println(file.getAbsolutePath());
 			fileXls = new POIFSFileSystem(fis);
 			workBook = new HSSFWorkbook(fileXls);
 			sheet = workBook.getSheetAt(0);

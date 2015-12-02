@@ -17,8 +17,8 @@ public class TestErreur {
 		flag = 1;
 		for (Entry<Integer, Qcm> entry : qcmList.entrySet()) {
 			int id = entry.getKey();
+			qcm = entry.getValue();
 			if (id == flag) {
-				qcm = entry.getValue();
 				if (qcm.getChoix1().getString().isEmpty()) {
 					qcm.setFlaga(false);
 					String sa = "Dans la source, la question " + flag + " Choix a est inspecifié";
@@ -47,6 +47,26 @@ public class TestErreur {
 					erreurs.add(ss);
 				}
 				flag = id;
+				if (qcm.getChoix1().getString().isEmpty()) {
+					qcm.setFlaga(false);
+					String sa = "Dans la source, la question " + flag + " Choix a est inspecifié";
+					erreurs.add(sa);
+				}
+				if (qcm.getChoix2().getString().isEmpty()) {
+					qcm.setFlagb(false);
+					String sb = "Dans la source, la question " +flag + " Choix b est inspecifié";
+					erreurs.add(sb);
+				}
+				if (qcm.getChoix3().getString().isEmpty()) {
+					qcm.setFlagc(false);
+					String sc = "Dans la source, la question " + flag  + " Choix c est inspecifié";
+					erreurs.add(sc);
+				}
+				if (qcm.getChoix4().getString().isEmpty()) {
+					qcm.setFlagd(false);
+					String sd = "Dans la source, la question " + flag + " Choix d est inspecifié";
+					erreurs.add(sd);
+				}
 			}
 			flag++;
 		}

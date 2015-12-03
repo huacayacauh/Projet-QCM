@@ -75,7 +75,7 @@ public class rootQcmMixListener {
 					} else {
 						textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
 						textarea.setText(
-								"Attention: Mauvaise structure dans la source, regardez la document ErrorLog  dans le dossier " + filelink.getName());
+								"Attention: Mauvaise structure dans le fichier source, regardez le fihier ErrorLog  dans le dossier " + filelink.getName());
 					}
 				} else {
 					textarea.setWrapText(true);
@@ -91,7 +91,7 @@ public class rootQcmMixListener {
 		} else {
 			textarea.setWrapText(true);
 			textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
-			textarea.setText("Choisissez votre fichier source d'abord s'il vous plait.");
+			textarea.setText("Choisissez  d'abord votre fichier source  s'il vous plait.");
 
 		}
 
@@ -111,7 +111,7 @@ public class rootQcmMixListener {
 		} else {
 			textarea.setWrapText(true);
 			textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
-			textarea.setText("Choisissez votre fichier source d'abord s'il vous plait.");
+			textarea.setText("Choisissez d'abord votre fichier source  s'il vous plait.");
 		}
 
 	}

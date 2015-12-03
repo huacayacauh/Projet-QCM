@@ -46,7 +46,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </TextArea>
-                              <TextArea fx:id="textarea1" editable="false" layoutX="7.0" layoutY="11.0" prefHeight="147.0" prefWidth="208.0" text="Attention：&#10;la source est XLS version :&#10;Microsoft Excel 97-2003 (.xls).&#10;il supporte 2 version:&#10;la source 6 colone: nom.xls&#10;la source 2 colone : !nom.xls&#10;">
+                              <TextArea fx:id="textarea1" editable="false" layoutX="7.0" layoutY="11.0" prefHeight="147.0" prefWidth="208.0" text="Attention：&#10;la source en .XLS version :&#10;Microsoft Excel 97-2003 (.xls).&#10; Je supporte 2 versions:&#10;la source de 6 colonnes: nom.xls&#10;la source de 2 colonnes : !nom.xls&#10;">
                                  <font>
                                     <Font name="System Bold" size="11.0" />
                                  </font>

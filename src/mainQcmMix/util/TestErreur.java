@@ -11,12 +11,12 @@ import java.util.Map.Entry;
 import mainQcmMix.model.Qcm;
 
 public class TestErreur {
-	boolean flag = false;
 	public Qcm qcm = new Qcm();
 	public List<String> eord = new ArrayList<String>();
 	String[] s = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n" };
 
 	public boolean testerreurs(TreeMap<Integer, Qcm> qcmList, List<String> erreurs, File file) {
+		boolean flag = false;
 		int g=1;
 		for (Entry<Integer, Qcm> entry : qcmList.entrySet()) {
 			qcm = entry.getValue();
@@ -76,13 +76,13 @@ public class TestErreur {
 					fw.flush();
 				}
 				fw.close();
-				erreurs.clear();
 				flag = true;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		erreurs.clear();
 		return flag;
 	}
 

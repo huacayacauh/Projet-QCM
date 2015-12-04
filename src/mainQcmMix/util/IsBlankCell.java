@@ -22,6 +22,7 @@ public class IsBlankCell {
 					value = cell.getCellFormula();
 					break;
 				default:
+					value = "";
 					break;
 				}
 				if(value.trim().equals("")){
@@ -34,6 +35,8 @@ public class IsBlankCell {
 					result = true;
 				}
 
+			}else{
+				result = true;
 			}
 		return result;
 	}

@@ -102,7 +102,6 @@ public class GenererXLS {
 			}
 
 		} else {
-
 			int pc = 0;
 			for (int i = 0; i < sheet.getLastRowNum(); i++) {
 				HSSFRow srow = sheet.getRow(i);
@@ -147,7 +146,7 @@ public class GenererXLS {
 		return filet;
 	}
 
-	private List<String> errlist2(int id, int pl, int pc, HSSFSheet sheet) {
+	public List<String> errlist2(int id, int pl, int pc, HSSFSheet sheet) {
 		boolean flag = true;
 		List<String> testerreurs = new ArrayList<String>();
 		int i = 1;
@@ -179,7 +178,7 @@ public class GenererXLS {
 		return testerreurs;
 	}
 
-	private List<HSSFRichTextString> choixlist2(int id, int pl, int pc, HSSFSheet sheet) {
+	public List<HSSFRichTextString> choixlist2(int id, int pl, int pc, HSSFSheet sheet) {
 		boolean flag = true;
 		List<HSSFRichTextString> choixes = new ArrayList<HSSFRichTextString>();
 		int i = 1;
@@ -191,7 +190,6 @@ public class GenererXLS {
 					HSSFCell cellx = row.getCell(pc + 1);
 					if (cellx != null && cellx.getCellType() == 1) {
 						HSSFRichTextString rts = cellx.getRichStringCellValue();
-						System.out.println(rts.toString());
 						choixes.add(rts);
 					} else if (cellx != null && cellx.getCellType() == 0) {
 						HSSFRichTextString rtss = new HSSFRichTextString((int) cellx.getNumericCellValue() + "");
@@ -215,7 +213,7 @@ public class GenererXLS {
 		return choixes;
 	}
 
-	private Qcm prendreQcm2(int id, int pl, int pc, HSSFSheet sheet) {
+	public Qcm prendreQcm2(int id, int pl, int pc, HSSFSheet sheet) {
 		boolean flag = true;
 		int i = 1;
 		Qcm qcm = new Qcm();
@@ -302,6 +300,7 @@ public class GenererXLS {
 			if (isblankrow.isBlankrow(frow)) {
 				flag = false;
 			} else {
+
 				HSSFCell cell1 = frow.getCell(pc);
 				HSSFCell cell2 = frow.getCell(pc + 1);
 				HSSFCell cell3 = frow.getCell(pc + 2);

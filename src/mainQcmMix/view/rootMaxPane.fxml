@@ -46,7 +46,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </TextArea>
-                              <TextArea fx:id="textarea1" editable="false" layoutX="7.0" layoutY="11.0" prefHeight="147.0" prefWidth="208.0" text="Attention：&#10;il supporte 2 version:&#10;la source 6 colonnes:   nom.xls&#10;la source 2 colonnes :  !nom.xls&#10;chaque choix est dans un carré&#10;">
+                              <TextArea fx:id="textarea1" editable="false" layoutX="7.0" layoutY="11.0" prefHeight="147.0" prefWidth="208.0" text="Attention：&#10;j'accepte 2 models:&#10;Model à 6 colonnes:   nom.xls&#10;Model à 2 colonnes :  !nom.xls&#10;chaque choix est dans un carré&#10;">
                                  <font>
                                     <Font name="System Bold" size="11.0" />
                                  </font>

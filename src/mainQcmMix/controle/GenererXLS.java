@@ -61,7 +61,7 @@ public class GenererXLS {
 				if (hrow != null) {
 					cell1 = hrow.getCell(pc1);
 					cell2 = hrow.getCell(pc2);
-					if (!isblankrow.isBlankrow(hrow) && cell1 != null && cell1.getCellType() == 0) {
+					if (!isblankrow.isBlankrow(hrow) && !isblankcell.isBlankCell(cell1) && cell1.getCellType() == 0) {
 						int id = (int) cell1.getNumericCellValue();
 						Qcm qcm = new Qcm();
 						qcm = prendreQcm(id, i, pc1, sheet);
@@ -80,7 +80,7 @@ public class GenererXLS {
 							qcmList.put(id, qcm);
 						}
 					}
-					if (!isblankrow.isBlankrow(hrow) && cell2 != null && cell2.getCellType() == 0) {
+					if (!isblankrow.isBlankrow(hrow) && !isblankcell.isBlankCell(cell2) && cell2.getCellType() == 0) {
 						int id = (int) cell2.getNumericCellValue();
 						Qcm qcm = new Qcm();
 						qcm = prendreQcm(id, i, pc2, sheet);
@@ -107,7 +107,7 @@ public class GenererXLS {
 				HSSFRow srow = sheet.getRow(i);
 				if (srow != null) {
 					HSSFCell cell = srow.getCell(pc);
-					if (cell != null && cell.getCellType() == 0) {
+					if (!isblankcell.isBlankCell(cell) && cell.getCellType() == 0) {
 						int id = (int) cell.getNumericCellValue();
 						Qcm qcm = new Qcm();
 						qcm = prendreQcm2(id, i, pc, sheet);
@@ -155,10 +155,10 @@ public class GenererXLS {
 			HSSFRow row = sheet.getRow(pl + i);
 			if (!isblankrow.isBlankrow(row)) {
 				HSSFCell cell = row.getCell(pc);
-				if (cell != null && cell.getCellType() == 1) {
+				if (!isblankcell.isBlankCell(cell) && cell.getCellType() == 1) {
 					stts = cell.getStringCellValue();
 					testerreurs.add(stts);
-				} else if (cell != null && cell.getCellType() == 0) {
+				} else if (!isblankcell.isBlankCell(cell) && cell.getCellType() == 0) {
 					stts = cell.getNumericCellValue() + "";
 					testerreurs.add(stts);
 				}
@@ -186,12 +186,12 @@ public class GenererXLS {
 			HSSFRow row = sheet.getRow(pl + i);
 			if (row != null) {
 				HSSFCell cell = row.getCell(pc);
-				if (cell != null && cell.getCellType() == 1) {
+				if (!isblankcell.isBlankCell(cell) && cell.getCellType() == 1) {
 					HSSFCell cellx = row.getCell(pc + 1);
-					if (cellx != null && cellx.getCellType() == 1) {
+					if (!isblankcell.isBlankCell(cellx) && cellx.getCellType() == 1) {
 						HSSFRichTextString rts = cellx.getRichStringCellValue();
 						choixes.add(rts);
-					} else if (cellx != null && cellx.getCellType() == 0) {
+					} else if (!isblankcell.isBlankCell(cellx) && cellx.getCellType() == 0) {
 						HSSFRichTextString rtss = new HSSFRichTextString((int) cellx.getNumericCellValue() + "");
 						choixes.add(rtss);
 					}
@@ -224,13 +224,13 @@ public class GenererXLS {
 			HSSFRow row = sheet.getRow(pl + i);
 			if (row != null) {
 				HSSFCell cell = row.getCell(pc);
-				if (cell != null && cell.getCellType() == 1) {
+				if (!isblankcell.isBlankCell(cell) && cell.getCellType() == 1) {
 					HSSFCell cellx = row.getCell(pc + 1);
-					if (cellx != null && cellx.getCellType() == 1) {
+					if (!isblankcell.isBlankCell(cellx) && cellx.getCellType() == 1) {
 						qcm.setAl(pl + i);
 						qcm.setAc(pc);
 						flag = false;
-					} else if (cellx != null && cellx.getCellType() == 0) {
+					} else if (!isblankcell.isBlankCell(cellx) && cellx.getCellType() == 0) {
 						qcm.setAl(pl + i);
 						qcm.setAc(pc);
 						flag = false;
@@ -250,12 +250,12 @@ public class GenererXLS {
 			HSSFRow row = sheet.getRow(pl + i);
 			if (row != null) {
 				HSSFCell cell = row.getCell(pc + 1);
-				if (cell != null && cell.getCellType() == 1) {
+				if (!isblankcell.isBlankCell(cell) && cell.getCellType() == 1) {
 					HSSFCell cellx = row.getCell(pc + 2);
-					if (cellx != null && cellx.getCellType() == 1) {
+					if (!isblankcell.isBlankCell(cellx) && cellx.getCellType() == 1) {
 						HSSFRichTextString rts = cellx.getRichStringCellValue();
 						choixes.add(rts);
-					} else if (cellx != null && cellx.getCellType() == 0) {
+					} else if (!isblankcell.isBlankCell(cellx) && cellx.getCellType() == 0) {
 						HSSFRichTextString rtss = new HSSFRichTextString((int) cellx.getNumericCellValue() + "");
 						choixes.add(rtss);
 					}
@@ -288,10 +288,10 @@ public class GenererXLS {
 			HSSFRow row = sheet.getRow(pl + i);
 			if (!isblankrow.isBlankrow(row)) {
 				HSSFCell cell = row.getCell(pc + 1);
-				if (cell != null && cell.getCellType() == 1) {
+				if (!isblankcell.isBlankCell(cell) && cell.getCellType() == 1) {
 					stts = cell.getStringCellValue();
 					testerreurs.add(stts);
-				} else if (cell != null && cell.getCellType() == 0) {
+				} else if (!isblankcell.isBlankCell(cell) && cell.getCellType() == 0) {
 					stts = cell.getNumericCellValue() + "";
 					testerreurs.add(stts);
 				}
@@ -326,13 +326,13 @@ public class GenererXLS {
 			HSSFRow row = sheet.getRow(pl + i);
 			if (row != null) {
 				HSSFCell cell = row.getCell(pc + 1);
-				if (cell != null && cell.getCellType() == 1) {
+				if (!isblankcell.isBlankCell(cell) && cell.getCellType() == 1) {
 					HSSFCell cellx = row.getCell(pc + 2);
-					if (cellx != null && cellx.getCellType() == 1) {
+					if (!isblankcell.isBlankCell(cellx) && cellx.getCellType() == 1) {
 						qcm.setAl(pl + i);
 						qcm.setAc(pc + 1);
 						flag = false;
-					} else if (cellx != null && cellx.getCellType() == 0) {
+					} else if (!isblankcell.isBlankCell(cellx)&& cellx.getCellType() == 0) {
 						qcm.setAl(pl + i);
 						qcm.setAc(pc + 1);
 						flag = false;

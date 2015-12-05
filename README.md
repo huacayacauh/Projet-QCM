@@ -13,7 +13,7 @@ est un software qui permet de créer des versions différentes d'un sujet d'exam
 - Java Version 8 de préférence
  
 3. Installation 
-4. 
+
   Pour la version portable
 il suffit juste delancer QCM-mix.exe en tant que administrateur et la fenetre d'accueil de s'application s'ouvrira en loins d'une minute sans aucune autre sollicitation de l’utilisateur. 
 

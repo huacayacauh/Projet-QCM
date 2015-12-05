@@ -35,7 +35,7 @@ Il suffit de double cliquer sur le fichier QCM-mix.exe et de suivre les instruct
   Model 2
 
 Ce model est formé de de colonnes 2 colonnes. L'énummération des questions(1,2,3,4,...) et des réponses(a,b,c,d.. tiennent sur la meme colonne A, tandis que les propositions de réponses sont dans la colonne B.
-  NB: le nom du fichier source doit absolument commencer par ! pour etre accepté par le système..
+  NB: le nom du fichier source doit absolument commencer par ! pour etre accepté par le système.
 
 
 

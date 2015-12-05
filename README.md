@@ -25,4 +25,4 @@ Il suffit de double cliquer sur le fichier QCM-mix.exe et de suivre les instruct
  
 Model 1
  ce model de structure du format xls est formé sur 6 collonnes et autant que possible de lignes.
-Projet-QCM/doc/images/i_8b1b3cdf756a114b_html_2228b19e.png
+![](Projet-QCM/doc/images/i_8b1b3cdf756a114b_html_2228b19e.png)

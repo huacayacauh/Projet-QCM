@@ -20,7 +20,7 @@ il suffit juste delancer QCM-mix.exe en tant que administrateur et la fenetre d'
 Pour la version installable
 Il suffit de double cliquer sur le fichier QCM-mix.exe et de suivre les instructions.
 
-4. Models, format et structure du file input acceptés 
+4. Models,format et structure du file input acceptés 
 
  -Tout fichier different  du xls doit au préalable etre converti en xls. 
  -Dans le fichier source  chaque question doit etre précedée par un nombre et  chaque proposition de réponse précédée par une lettre (a,b,c,d...)

@@ -3,10 +3,10 @@
 Welcome to QCM MIX Project
 
 1. C'est quoi QUIX MIX ?
-2. 
+
 est un software qui permet de créer des versions différentes d'un sujet d'examen structuré sur la forme des Questions à choix multiples(QCM). Cela garantie la probabilité que deux candidats voisins en salle d'examen n'aient pas le même sujet d'examen avec la même organisation.
 
-Système d'exploitation acceptés
+2. Systèmes d'exploitation acceptés et java
 
 - Windows
 - Linux
@@ -14,4 +14,10 @@ Système d'exploitation acceptés
 Java
  Version 8 de préférence
  
+ 3. Installation 
+ 
+ Pour la version portable
+il suffit juste delancer QCM-mix.exe en tant que administrateur et la fenetre d'accueil de s'application s'ouvrira en loins d'une minute sans aucune autre sollicitation de l’utilisateur. 
 
+Pour la version installable
+Il suffit de double cliquer sur le fichier QCM-mix.exe et de suivre les instructions.

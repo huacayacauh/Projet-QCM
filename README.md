@@ -10,9 +10,7 @@ est un software qui permet de créer des versions différentes d'un sujet d'exam
 
 - Windows
 - Linux
-
-Java
- Version 8 de préférence
+- Java Version 8 de préférence
  
  3. Installation 
  
@@ -21,3 +19,10 @@ il suffit juste delancer QCM-mix.exe en tant que administrateur et la fenetre d'
 
 Pour la version installable
 Il suffit de double cliquer sur le fichier QCM-mix.exe et de suivre les instructions.
+
+4. Models de format input acceptés 
+ Tout fichier differnt du xls doit au préalable etre converti en xls.
+ 
+Model 1
+ ce model de structure du format xls est formé sur 6 collonnes et autant que possible de lignes.
+Projet-QCM/doc/images/i_8b1b3cdf756a114b_html_2228b19e.png

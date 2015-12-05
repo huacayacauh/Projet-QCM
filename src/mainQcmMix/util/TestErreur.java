@@ -1,6 +1,9 @@
 package mainQcmMix.util;
 
 import java.util.TreeMap;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
@@ -8,69 +11,79 @@ import java.util.Map.Entry;
 import mainQcmMix.model.Qcm;
 
 public class TestErreur {
-	int flag = 1;
-	int flagid = 0;
-	static Qcm qcm = null;
-	public List<String> erreurs = new ArrayList<String>();
+	public Qcm qcm = new Qcm();
+	public List<String> eord = new ArrayList<String>();
+	String[] s = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n" };
 
-	public List<String> testerreurs(TreeMap<Integer, Qcm> qcmList) {
-		flag = 1;
+	public boolean testerreurs(TreeMap<Integer, Qcm> qcmList, List<String> erreurs, File file) {
+		boolean flag = false;
+		int g=1;
 		for (Entry<Integer, Qcm> entry : qcmList.entrySet()) {
-			int id = entry.getKey();
 			qcm = entry.getValue();
-			if (id == flag) {
-				if (qcm.getChoix1().getString().isEmpty()) {
-					qcm.setFlaga(false);
-					String sa = "Dans la source, la question " + flag + " Choix a est inspecifié";
-					erreurs.add(sa);
+			int f = qcm.getId() - g;
+			if(f==0){
+				eord = qcm.getTesterreurs();
+				int i = 0;
+				while (i < eord.size()) {
+					int q=i;
+					while (!eord.get(i).equalsIgnoreCase(s[q])) {
+						String t = "Dans la sources, la question " + qcm.getId() + ", le choix " + s[q] + " est perdu.";
+						erreurs.add(t);
+						if(q<s.length-1){
+						q++;
+						}else{
+							String m = "Dans la sources, la question " + qcm.getId() + ", le choix " + eord.get(i) + " est perdu.";
+							erreurs.add(m);
+							break;
+						}
+					}
+					i++;
 				}
-				if (qcm.getChoix2().getString().isEmpty()) {
-					qcm.setFlagb(false);
-					String sb = "Dans la source, la question " + flag + " Choix b est inspecifié";
-					erreurs.add(sb);
+
+			}else{
+				for(int m=0;m<f;m++){
+					String s = "Dans la sources, la questin "+ (g+m) +" est perdu";
+					erreurs.add(s);
 				}
-				if (qcm.getChoix3().getString().isEmpty()) {
-					qcm.setFlagc(false);
-					String sc = "Dans la source, la question " + flag + " Choix c est inspecifié";
-					erreurs.add(sc);
+				eord = qcm.getTesterreurs();
+				int i = 0;
+				while (i < eord.size()) {
+					int q=i;
+					while (!eord.get(i).equalsIgnoreCase(s[q])) {
+						String t = "Dans la sources, la question " + qcm.getId() + ", le choix " + s[q] + " est perdu.";
+						erreurs.add(t);
+						q++;
+					}
+					i++;
 				}
-				if (qcm.getChoix4().getString().isEmpty()) {
-					qcm.setFlagd(false);
-					String sd = "Dans la source, la question " + flag + " Choix d est inspecifié";
-					erreurs.add(sd);
-				}
-			} else {
-				int f = id - flag;
-				for (int i = 0; i < f; i++) {
-					String ss = "Dans le fichier source, On ne trouve pas la question: " + (flag + i)
-							+ ", la structure source a été préservée dans les fichiers générés";
-					erreurs.add(ss);
-				}
-				flag = id;
-				if (qcm.getChoix1().getString().isEmpty()) {
-					qcm.setFlaga(false);
-					String sa = "Dans la source, la question " + flag + " Choix a est inspecifié";
-					erreurs.add(sa);
-				}
-				if (qcm.getChoix2().getString().isEmpty()) {
-					qcm.setFlagb(false);
-					String sb = "Dans la source, la question " +flag + " Choix b est inspecifié";
-					erreurs.add(sb);
-				}
-				if (qcm.getChoix3().getString().isEmpty()) {
-					qcm.setFlagc(false);
-					String sc = "Dans la source, la question " + flag  + " Choix c est inspecifié";
-					erreurs.add(sc);
-				}
-				if (qcm.getChoix4().getString().isEmpty()) {
-					qcm.setFlagd(false);
-					String sd = "Dans la source, la question " + flag + " Choix d est inspecifié";
-					erreurs.add(sd);
-				}
+
+				g=qcm.getId();
 			}
-			flag++;
+			g++;
 		}
-		return erreurs;
+		if (erreurs.size() > 0) {
+			try {
+				String path = file.getAbsolutePath();
+				File efile = new File(path + "/ErrorsLog.txt");
+				FileWriter fw = new FileWriter(efile);
+				String s1 = "Le fichier source contient des choix avec des caracteres gras,"
+						+ " verifiez les fichiers générés." + System.getProperty("line.separator");
+				fw.write(s1);
+				fw.flush();
+				for (int j = 0; j < erreurs.size(); j++) {
+					String ss = erreurs.get(j) + System.getProperty("line.separator");
+					fw.write(ss);
+					fw.flush();
+				}
+				fw.close();
+				flag = true;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		erreurs.clear();
+		return flag;
 	}
 
 }

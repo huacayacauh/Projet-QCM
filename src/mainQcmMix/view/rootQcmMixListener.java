@@ -69,13 +69,13 @@ public class rootQcmMixListener {
 				if (filelink != null) {
 					textarea.setWrapText(true);
 					textarea.setStyle("-fx-text-fill: green; -fx-font-size: 15;");
-					if (!GenererXLS.ExisteFile()) {
+					if (filelink.listFiles().length>2) {
 						textarea.setText(
 								"Operation validée, il y a 4 versions d'examens dans le dossier " + filelink.getName());
 					} else {
+						textarea.setStyle("-fx-text-fill: red; -fx-font-size: 15;");
 						textarea.setText(
-								"Operation validée, il y a 4 versions d'examens dans la dossier " + filelink.getName()
-										+ "\nAttention: Mauvaise structure dans la source, regardez ErrorLog !!");
+								"Attention: Mauvaise structure dans la source, regardez la document ErrorLog  dans le dossier " + filelink.getName());
 					}
 				} else {
 					textarea.setWrapText(true);
